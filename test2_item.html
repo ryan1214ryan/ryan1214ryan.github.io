@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>物品介紹</title>
+</head>
+<body>
+  <h1 id="title">載入中...</h1>
+  <p id="description">請稍候...</p>
+  <a href="test.html">回到主頁</a>
+
+  <script>
+    // 取得網址參數 ?id=item1
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    // 模擬資料庫
+    const items = {
+      item1: {
+        title: "物品1",
+        description: "這是物品1的詳細介紹。",
+      },
+      item2: {
+        title: "物品2",
+        description: "這是物品2的詳細介紹。",
+      },
+      item3: {
+        title: "物品3",
+        description: "這是物品3的詳細介紹。",
+      }
+    };
+
+    // 根據 id 顯示內容
+    const item = items[id];
+    if (item) {
+      document.getElementById("title").textContent = item.title;
+      document.getElementById("description").textContent = item.description;
+    } else {
+      document.getElementById("title").textContent = "找不到物品";
+      document.getElementById("description").textContent = "請從主頁選擇一個有效的物品。";
+    }
+  </script>
+</body>
+</html>
